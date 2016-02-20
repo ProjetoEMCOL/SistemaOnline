@@ -1,0 +1,90 @@
+<html>
+<head>
+  <title>EMCOL | Geolocalização</title>
+  <meta charset="UTF-8">
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+  <link rel="stylesheet" href="./resources/css/leaflet.css" />
+
+  <link rel="stylesheet" href="./resources/css/app.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+  <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+
+</head>
+<body>
+  <header>
+    <!-- NavBar -->
+    <nav class="top-nav blue lighten-1">
+      <div class="container container-85 ">
+        <div class="nav-wrapper">
+          <a class="page-title flow-text">Medição de temperatura - Arduino e IoT</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <a href="" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only">
+        <i class="mdi-navigation-menu"></i>
+      </a>
+    </div>
+    <ul id="nav-mobile" class="side-nav fixed">
+      <li class="logo">
+        <a id="logo-container" href="index.html" class="">
+          <img src="./resources/img/localizacao.jpg"  width="150px" alt="" />
+          <h3>EMCOL</h3>
+        </a>
+      </li>
+      <div class="divider"></div>
+      <li class="bold"><a href="index.html" class="waves-effect waves-teal">Página Inicial</a></li>
+      <li class="bold"><a href="estacoes.html" class="waves-effect waves-teal">Todas as Estações</a></li>
+      <li class="bold"><a href="geolocalizacao.html" class="waves-effect waves-teal">Geolocalização</a></li>
+      <li class="bold"><a href="configuracao.html" class="waves-effect waves-teal">Configuração</a></li>
+      <li class="bold"><a href="projeto.html" class="waves-effect waves-teal">Projeto</a></li>
+    </ul>
+  </header>
+  <!-- Body -->
+  <main>
+    <div class=" ">
+      <div class="row">
+        <div class="col s12 m12 l12">
+          <div id="map"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script type="text/javascript">
+  (function($){
+    $(function(){
+      $('.button-collapse').sideNav({
+        menuWidth: 250, // Default is 240
+        edge: 'left', // Choose the horizontal origin
+      });
+
+    }); // end of document ready
+  })(jQuery); // end of jQuery name space
+  </script>
+  <script>
+  var latitude = parseFloat(localStorage.getItem("lat"));
+  var longitude = parseFloat(localStorage.getItem("long"));
+  var temperatura = parseFloat(localStorage.getItem("temp"));
+  var map = L.map('map').setView([latitude, longitude], 14);
+
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
+    maxZoom: 18,
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+    '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+    'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    id: 'mapbox.streets'
+  }).addTo(map);
+
+  var emcol = {title: "Minha Estação", lat: latitude, long: longitude, temp:temperatura};
+
+  function addMarker(data){
+    L.marker([data.lat, data.long]).bindPopup("<b>"+data.title+"</b><p>"+data.temp+"</p>").addTo(map);
+  }
+  addMarker(emcol);
+  </script>
+</body>
+</html>

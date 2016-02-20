@@ -1,0 +1,75 @@
+<html>
+<head>
+  <title>EMCOL | Página Inicial</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="./resources/bower_components/Materialize/dist/css/materialize.min.css" media="screen,projection"/>
+  <link rel="stylesheet" href="./resources/css/leaflet.css" />
+  <link rel="stylesheet" href="./resources/css/app.css">
+  <script type="text/javascript" src="./resources/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="./resources/bower_components/Materialize/dist/js/materialize.min.js"></script>
+  <script type='text/javascript' src="./resources/js/mosquitto.js"></script>
+  <script src="./resources/js/leaflet.js"></script>
+</head>
+<body>
+  <header>
+    <!-- NavBar -->
+    <nav class="top-nav blue lighten-1">
+      <div class="container container-85 ">
+        <div class="nav-wrapper">
+          <a class="page-title flow-text">Medição de temperatura - Arduino e IoT</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <a href="" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only">
+        <i class="mdi-navigation-menu"></i>
+      </a>
+    </div>
+    <ul id="nav-mobile" class="side-nav fixed">
+      <li class="logo">
+        <a id="logo-container" href="index.html" class="">
+          <img src="./resources/img/localizacao.jpg"  width="150px" alt="" />
+          <h3>EMCOL</h3>
+        </a>
+      </li>
+      <div class="divider"></div>
+      <li class="bold"><a href="index.html" class="waves-effect waves-teal">Página Inicial</a></li>
+      <li class="bold"><a href="estacoes.html" class="waves-effect waves-teal">Todas as Estações</a></li>
+      <li class="bold"><a href="geolocalizacao.html" class="waves-effect waves-teal">Geolocalização</a></li>
+      <li class="bold"><a href="configuracao.html" class="waves-effect waves-teal">Configuração</a></li>
+      <li class="bold"><a href="projeto.html" class="waves-effect waves-teal">Projeto</a></li>
+    </ul>
+  </header>
+  <!-- Body -->
+  <main>
+    <div class=" ">
+      <div class="row">
+        <div class="col s12 m12 l12 center">
+          <h4>Estação de medição de temperatura Open-Source com Arduino e IoT - Comunicação</h4>
+          <div class="divider"></div>
+          <p class="flow-text">Artigo 1 - Configuracao: <a href="http://www.embarcados.com.br/estacao-de-medicao-de-temperatura-com-arduino-e-iot-configuracao/" target="_blank">Link</a></p>
+          <p class="flow-text">Artigo 2 - Comunicação: <a href="http://www.embarcados.com.br/estacao-de-medicao-de-temperatura-com-arduino-e-iot-comunicacao/" target="_blank">Link</a></p>
+          <p class="flow-text">Artigo 3 - Final: <a href="http://www.embarcados.com.br/estacao-de-medicao-de-temperatura-com-arduino-e-iot-comunicacao/" target="_blank">Link</a></p>
+          <div class="divider"></div>
+          <p class="flow-text">Site Embarcados: <a href="http://www.embarcados.com.br" target="_blank">Link</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<script type="text/javascript">
+(function($){
+  $(function(){
+    $('.button-collapse').sideNav({
+      menuWidth: 250, // Default is 240
+      edge: 'left', // Choose the horizontal origin
+    });
+
+  }); // end of document ready
+})(jQuery); // end of jQuery name space
+</script>
+</body>
+</html>
